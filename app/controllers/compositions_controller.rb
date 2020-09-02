@@ -1,6 +1,6 @@
 class CompositionsController < ApplicationController
     def show
-        comp = Composition.first
+        comp = Composition.find(params[:id])
         layers = comp.serialize_layers
         the_res = {
             id: comp.id,
@@ -22,6 +22,6 @@ class CompositionsController < ApplicationController
     private
 
     def composition_params
-        params.require(:composition).permit(:creator_id, :num_bars, :time_sig_num, :time_sig_denom)
+        params.require(:composition).permit(:creator_id, :tempo, :name, :num_bars, :time_sig_num, :time_sig_denom)
     end
 end
