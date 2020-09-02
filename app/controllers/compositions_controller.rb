@@ -13,4 +13,15 @@ class CompositionsController < ApplicationController
         }
         render json: the_res
     end
+
+    def create
+        comp = Composition.create!(composition_params)
+        render json: {id:comp.id}
+    end
+
+    private
+
+    def composition_params
+        params.require(:composition).permit(:creator_id, :num_bars, :time_sig_num, :time_sig_denom)
+    end
 end
