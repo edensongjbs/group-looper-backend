@@ -3,15 +3,6 @@ class Composition < ApplicationRecord
     has_many :layers
 
     def serialize_layers
-        self.layers.to_a.map{ |l| {
-                compositionId: l.composition_id,
-                instrumentName: l.sound_preset_name,
-                userId: l.user_id,
-                layerName: l.name,
-                id: l.id,
-                layerString: l.pitch_events,
-                readOnly: l.read_only
-            }
-        }
+        self.layers.to_a.map{ |l| l.serialize }
     end
 end
