@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/login' => 'auth#create'
   resources :users, only: [:create, :destroy, :show, :update]
   resources :compositions, only: [:create, :show, :destroy, :update]
   resources :layers, only: [:create, :show, :destroy, :update]
