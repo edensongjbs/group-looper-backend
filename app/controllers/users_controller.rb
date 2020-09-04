@@ -7,9 +7,8 @@ class UsersController < ApplicationController
             user.save
             render json: {userName: user.user_name, jwt: encode_token({user_id: user.id})}     
         else
-            render json: {error: user.errors.full_messages}
+            render json: {errors: user.errors.full_messages}
         end
-
     end
 
     private
