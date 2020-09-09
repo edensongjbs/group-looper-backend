@@ -31,7 +31,7 @@ class CompositionsController < ApplicationController
         # byebug
         comp = Composition.create!(composition_params.merge(creator: current_user))
         UserComposition.create!(composition: comp, user: cu, creator: cu)
-        render json: {id:comp.id}
+        render json: {id:comp.id, user:{userName: cu.user_name, creatorName: cu.user_name}}
     end
 
     private
