@@ -1,4 +1,5 @@
 class AuthController < ApplicationController
+    before_action :logged_in?, only: :index
 
     def create
         if params[:userName]
@@ -11,6 +12,11 @@ class AuthController < ApplicationController
         else
             render json: {error: "Invalid Username or Password"}
         end
+    end
+
+    def index
+        compositions = current_user.compositions.to_a.map{|comp| {id:comp.id, title:comp.name}}
+        render json: {compositions:compositions}
     end
 
 end

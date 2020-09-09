@@ -12,7 +12,7 @@ class CompositionsChannel < ApplicationCable::Channel
 
     def received(data)
       CompositionsChannel.broadcast_to(@composition, {
-        layers: @composition.layers
+        layers: @composition.layers, user_compositions: @composition.user_compositions
       })
     end
 
